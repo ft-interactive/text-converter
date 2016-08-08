@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 /**
  * text-converter
  * 2016 Ændrew Rininsland

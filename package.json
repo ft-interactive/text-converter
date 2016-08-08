@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Convert .txt spreadsheets with comments into a variety of formats",
   "main": "index.js",
+  "bin": "./index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
