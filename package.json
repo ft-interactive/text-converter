@@ -1,13 +1,13 @@
 {
   "name": "text-converter",
   "version": "1.0.0",
-  "description": "",
+  "description": "Convert .txt spreadsheets with comments into a variety of formats",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "Ændrew Rininsland <aendrew@aendrew.com>",
   "license": "ISC",
   "dependencies": {
     "chalk": "^1.1.3",
