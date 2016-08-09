@@ -1,8 +1,0 @@
-
-title	Coverage ratios
-subtitle	Total provision as % of non-performing assets
-source	companies
-footnote	delete if not required
-comment	Line chart
-doublescale	0
-accumulate	false
