@@ -33,7 +33,6 @@ if (cli.input.length) {
       const input = fs.readFileSync(path, {encoding: 'utf-8'});
       const comments = extractComments(input);
       const data = cleanInput(input, comments);
-
       const outputConf = {
         quotes: true
       };
