@@ -1,6 +1,6 @@
 {
   "name": "text-converter",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Convert .txt spreadsheets with comments into a variety of formats",
   "main": "lib/index.js",
   "bin": "./index.js",
