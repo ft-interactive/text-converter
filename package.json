@@ -2,12 +2,16 @@
   "name": "text-converter",
   "version": "1.0.4",
   "description": "Convert .txt spreadsheets with comments into a variety of formats",
-  "main": "index.js",
+  "main": "lib/index.js",
   "bin": "./index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha spec/text-converter.spec.js"
   },
-  "keywords": [],
+  "keywords": [
+    "tsv",
+    "spreadsheets",
+    "text"
+  ],
   "author": "Ændrew Rininsland <aendrew@aendrew.com>",
   "license": "ISC",
   "dependencies": {
