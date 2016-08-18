@@ -11,11 +11,8 @@ chai.should(); // Uses should syntax.
 
 describe('parsing "COS Airbus stack bar2.txt"', () => {
   const path = resolve(__dirname, 'mocks', 'COS Airbus stack bar2.txt');
-  const data = readFileSync(path);
-  const comments = extractComments(data);
-  const output = cleanInput(data, comments);
 
-  it('should be able to parse comments', () => {
+  function assertComments() {
     comments.should.have.lengthOf(8);
     comments[0].should.eql(['Narrow', 'Wide']);
     comments[1].should.eql(['title', 'Commercial aircraft order backlog']);
@@ -25,23 +22,38 @@ describe('parsing "COS Airbus stack bar2.txt"', () => {
     comments[5].should.eql(['comment', 'Any message you want Graphics to see during processing; delete if not required']);
     comments[6].should.eql(['doublescale', '0']);
     comments[7].should.eql(['accumulate', 'true']);
-  });
+  };
 
-  it('should be able to clean data', () => {
+  function assertData() {
     output.should.have.lengthOf(3);
     output[0].should.eql(['&', 'Narrow', 'Wide']);
     output[1].should.eql(['Airbus', 5558, 1257]);
     output[2].should.eql(['Boeing', 4044, 1653]);
+  }
+
+  describe('loading data as Buffer', () => {
+    const data = readFileSync(path);
+    const comments = extractComments(data);
+    const output = cleanInput(data, comments);
+
+    it('should be able to parse comments', () => assertComments);
+    it('should be able to clean data', () => assertData);
+  });
+
+  describe('loading data as String', () => {
+    const data = readFileSync(path, { encoding: 'utf8' });
+    const comments = extractComments(data);
+    const output = cleanInput(data, comments);
+
+    it('should be able to parse comments', () => assertComments);
+    it('should be able to clean data', () => assertData);
   });
 });
 
 describe('parsing "Datawatch Tuesday.txt', () => {
   const path = resolve(__dirname, 'mocks', 'Datawatch Tuesday.txt');
-  const data = readFileSync(path);
-  const comments = extractComments(data);
-  const output = cleanInput(data, comments);
 
-  it('should be able to parse comments', () => {
+  function assertComments() {
     comments.should.have.lengthOf(8);
     comments[0].should.eql(['Exports', 'Imports']);
     comments[1].should.eql(['title', 'Turkey trade with Russia']);
@@ -51,21 +63,36 @@ describe('parsing "Datawatch Tuesday.txt', () => {
     comments[5].should.eql(['comment', 'Line chart']);
     comments[6].should.eql(['doublescale', '0']);
     comments[7].should.eql(['accumulate', 'false']);
-  });
+  }
 
-  it('should be able to clean data', () => {
+  function assertData() {
     output.should.have.lengthOf(268);
     output[0].should.eql(['date', 'Exports', 'Imports']);
+  }
+
+  describe('loading data as Buffer', () => {
+    const data = readFileSync(path);
+    const comments = extractComments(data);
+    const output = cleanInput(data, comments);
+
+    it('should be able to parse comments', () => assertComments);
+    it('should be able to clean data', () => assertData);
+  });
+
+  describe('loading data as String', () => {
+    const data = readFileSync(path, {encoding: 'utf8'});
+    const comments = extractComments(data);
+    const output = cleanInput(data, comments);
+
+    it('should be able to parse comments', () => assertComments);
+    it('should be able to clean data', () => assertData);
   });
 });
 
 describe('parsing "lex3 line.txt"', () => {
   const path = resolve(__dirname, 'mocks', 'lex3 line.txt');
-  const data = readFileSync(path);
-  const comments = extractComments(data);
-  const output = cleanInput(data, comments);
 
-  it('should be able to parse comments', () => {
+  function assertComments() {
     comments.should.have.lengthOf(8);
     comments[0].should.eql([
       'UOB total NPAs',
@@ -82,9 +109,9 @@ describe('parsing "lex3 line.txt"', () => {
     comments[5].should.eql(['comment', 'Line chart']);
     comments[6].should.eql(['doublescale', '0']);
     comments[7].should.eql(['accumulate', 'false']);
-  });
+  }
 
-  it('should be able to clean data', () => {
+  function assertData() {
     output.should.have.lengthOf(6);
     output[0].should.eql([
       'date',
@@ -95,16 +122,31 @@ describe('parsing "lex3 line.txt"', () => {
       'OCBC total NPAs',
       'OCBC unsecured NPAs'
     ]);
+  }
+
+  describe('loading data as Buffer', () => {
+    const data = readFileSync(path);
+    const comments = extractComments(data);
+    const output = cleanInput(data, comments);
+
+    it('should be able to parse comments', () => assertComments);
+    it('should be able to clean data', () => assertData);
+  });
+
+  describe('loading data as String', () => {
+    const data = readFileSync(path, {encoding: 'utf8'});
+    const comments = extractComments(data);
+    const output = cleanInput(data, comments);
+
+    it('should be able to parse comments', () => assertComments);
+    it('should be able to clean data', () => assertData);
   });
 });
 
 describe('parsing "WLD - Iran migration.txt"', () => {
   const path = resolve(__dirname, 'mocks', 'WLD - Iran migration.txt');
-  const data = readFileSync(path, { encoding: 'ucs2' });
-  const comments = extractComments(data);
-  const output = cleanInput(data, comments);
 
-  it('should be able to parse comments', () => {
+  function assertComments() {
     comments.should.have.lengthOf(8);
     comments[0].should.eql(['Trace 1']);
     comments[1].should.eql(['title', 'Iran\'s diaspora']);
@@ -114,10 +156,28 @@ describe('parsing "WLD - Iran migration.txt"', () => {
     comments[5].should.eql(['comment', 'Bar chart']);
     comments[6].should.eql(['doublescale', '0']);
     comments[7].should.eql(['accumulate', 'false']);
-  });
+  }
 
-  it('should be able to clean data', () => {
+  function assertData() {
     output.should.have.lengthOf(21);
     output[0].should.eql(['&', 'Trace 1']);
+  }
+
+  describe('loading data as Buffer', () => {
+    const data = readFileSync(path);
+    const comments = extractComments(data);
+    const output = cleanInput(data, comments);
+
+    it('should be able to parse comments', () => assertComments);
+    it('should be able to clean data', () => assertData);
+  });
+
+  describe('loading data as String', () => {
+    const data = readFileSync(path, {encoding: 'ucs2'});
+    const comments = extractComments(data);
+    const output = cleanInput(data, comments);
+
+    it('should be able to parse comments', () => assertComments);
+    it('should be able to clean data', () => assertData);
   });
 });
