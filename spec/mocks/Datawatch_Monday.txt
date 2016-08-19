@@ -1,0 +1,19 @@
+&	Men	Women
+1972	36	38
+1976	50	50
+1980	36	45
+1984	37	44
+1988	41	49
+1992	41	45
+1996	43	54
+2000	42	54
+2004	44	51
+2008	49	56
+2012	45	55
+&title= Women consistently vote for the Democratic candidate		
+&subtitle= % who voted for the Democratic candidate according to US exit polls		
+&source= Pew Research Centre		
+&footnote=delete if not required		
+&comment=Line chart		
+&doublescale=0		
+&accumulate=false		
